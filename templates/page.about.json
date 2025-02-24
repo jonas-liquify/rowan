@@ -1,0 +1,40 @@
+{
+    "sections": {
+        "abouthero": {
+            "type": "abouthero"
+        },
+        "timeline": {
+            "type": "timeline"
+        },
+        "productgallery": {
+            "type": "productgallery"
+        },
+        "bentobox": {
+            "type": "bentobox"
+        },
+        "testimonialslider": {
+            "type": "testimonialslider"
+        },
+        "team": {
+            "type": "team"
+        },
+        "faqs": {
+            "type": "faqs"
+        },
+        "contactcta": {
+            "type": "contactcta"
+        }
+    },
+    "layout": "page.about",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "abouthero",
+        "timeline",
+        "productgallery",
+        "bentobox",
+        "testimonialslider",
+        "team",
+        "faqs",
+        "contactcta"
+    ]
+}

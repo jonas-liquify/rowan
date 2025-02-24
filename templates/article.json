@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "articlehero": {
+            "type": "articlehero"
+        },
+        "articlecontent": {
+            "type": "articlecontent"
+        }
+    },
+    "layout": "article",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "articlehero",
+        "articlecontent"
+    ]
+}

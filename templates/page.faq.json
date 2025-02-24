@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "faqsalternate": {
+            "type": "faqsalternate"
+        },
+        "contactcta": {
+            "type": "contactcta"
+        }
+    },
+    "layout": "page.faq",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "faqsalternate",
+        "contactcta"
+    ]
+}
