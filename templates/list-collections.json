@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "collectionheader": {
+            "type": "collectionheader"
+        },
+        "list_collection": {
+            "type": "list_collection"
+        }
+    },
+    "layout": "list-collections",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "collectionheader",
+        "list_collection"
+    ]
+}

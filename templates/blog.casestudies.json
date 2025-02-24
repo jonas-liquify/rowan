@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "casestudies": {
+            "type": "casestudies"
+        },
+        "contactcta": {
+            "type": "contactcta"
+        }
+    },
+    "layout": "blog.casestudies",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "casestudies",
+        "contactcta"
+    ]
+}

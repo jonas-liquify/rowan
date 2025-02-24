@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "contactformimage": {
+            "type": "contactformimage"
+        },
+        "contactdetailsmap": {
+            "type": "contactdetailsmap"
+        }
+    },
+    "layout": "contact",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "contactformimage",
+        "contactdetailsmap"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "blogs": {
+            "type": "blogs"
+        },
+        "contactcta": {
+            "type": "contactcta"
+        }
+    },
+    "layout": "blog",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "blogs",
+        "contactcta"
+    ]
+}

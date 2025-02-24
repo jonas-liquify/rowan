@@ -1,0 +1,48 @@
+{
+    "sections": {
+        "videohero": {
+            "type": "videohero"
+        },
+        "scrollanimatecontent": {
+            "type": "scrollanimatecontent"
+        },
+        "bentobox": {
+            "type": "bentobox"
+        },
+        "productslider": {
+            "type": "productslider"
+        },
+        "productgallery": {
+            "type": "productgallery"
+        },
+        "calltoactionbanner": {
+            "type": "calltoactionbanner"
+        },
+        "featuredarticles": {
+            "type": "featuredarticles"
+        },
+        "testimonialslider": {
+            "type": "testimonialslider"
+        },
+        "faqs": {
+            "type": "faqs"
+        },
+        "contactcta": {
+            "type": "contactcta"
+        }
+    },
+    "layout": "theme",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "videohero",
+        "scrollanimatecontent",
+        "bentobox",
+        "productslider",
+        "productgallery",
+        "calltoactionbanner",
+        "featuredarticles",
+        "testimonialslider",
+        "faqs",
+        "contactcta"
+    ]
+}
