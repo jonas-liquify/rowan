@@ -25,7 +25,7 @@
               <link rel="apple-touch-icon" type="image/png" href="{{ settings.apple_touch_icon | img_url: '32x32' }}">
             {% endif %}
         
-<!--  Favicon  -->
+{% - assign excludedCollections = "show-in-designer,customized" | split: ',' -%}{% - if excludedCollections contains collection.handle -%}<meta name="robots" content="noindex, nofollow">{% - endif -%}{% if template.suffix == 'imp_noindex' %}<meta name="robots" content="noindex, nofollow">{% endif %}<!--  Favicon  -->
 <link rel="manifest" href="https://raw.githubusercontent.com/Cardow-Co/The-Print-Garage/refs/heads/main/manifest.webmanifest">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: no-preference)">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
@@ -51,7 +51,74 @@
 <script async="" src="https://cdn.jsdelivr.net/gh/manuelogomigo/flowscriipt/auto-update-year/script.js"></script><!--  [Attributes by Finsweet] Disable scrolling  -->
 <script defer="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"></script><!--  Lenis CSS  -->
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css">
-<script src="{{ '_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
+<script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "{{ product.title }}",
+       "image": "https:{{ product.featured_image.src | img_url: '1500x1500' }}",
+        "description": "{{ product.description | strip_html }}",
+        "brand": "{{ product.vendor }}",
+        "sku": "{{ product.selected_or_first_available_variant.sku }}",
+        "offers": [
+        {% for variant in product.variants %}{
+          "@type": "Offer",
+          "url": "{{ variant.url }}",
+          "priceCurrency": "{{ cart.currency.iso_code | json }}",
+          "price": "{{ variant.price | money }}",
+      "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
+          "availability": "{% if variant.available %}https://schema.org/InStock{% else variant.available == false %}https://schema.org/SoldOut{% endif %}",
+          "itemCondition": "https://schema.org/NewCondition"
+        }{% if forloop.last == false %},{% endif %}{% endfor %}
+        ]
+        }
+    </script><script type="application/ld+json">{
+         "@context": "https://schema.org",
+         "@type": "BreadcrumbList",
+         "itemListElement":
+         [
+          {
+           "@type": "ListItem",
+           "position": 1,
+           "item":
+           {
+            "@id": "{{ shop.url }}",
+            "name": "Home"
+            }
+          },
+        {
+           "@type": "ListItem",
+           "position": 2,
+           "item":
+           {
+            "@id": "{% if collection.url %}{{ collection.url }}{% else %}{{ product.vendor }}{% endif %}",
+            "name": "{% if collection.url %}{{collection.title }}{% else %}{{ product.vendor }}{% endif %}"
+            }
+          },
+          {
+           "@type": "ListItem",
+          "position": 3,
+          "item":
+           {
+             "@id": "{{ product.url }}",
+             "name": "{{ product.title }}"
+           }
+          }
+         ]
+        }
+    </script><script type="application/ld+json">{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [{% for fa_qs in shop.metaobjects.fa_qs.values %}{
+            "@type": "Question",
+            "name": "{{ fa_qs.frage }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ fa_qs.antwort | metafield_tag | strip_html }}"
+            }
+          }{% if forloop.last == false %},{% endif %}{% endfor %}
+          ]
+        }
+    </script><script src="{{ '_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
 <body li-page="product">
 
 <div class="page-wrapper">{% render 'global_styles' %}
@@ -66,6 +133,49 @@ const lenis = new Lenis({
 </script>{% render 'search_javascript' %}
 <!--  Start of HubSpot Embed Code  -->
 <script type="text/javascript" id="hs-script-loader" async="" defer="" src="https://js.hs-scripts.com/5189439.js?businessUnitId=843832"></script><!--  End of HubSpot Embed Code  -->
-
+{% include 'xe_include' %}<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script><script>$(".swiper-container").each(function (index) {
+    const thumbsSwiper = new Swiper($(this).find(".swiper.is-product-thumbnail")[0], {
+      slidesPerView: "auto",
+      rewind: false,
+      loopedSlides: 8,
+      slideToClickedSlide: true,
+      spaceBetween: "4%",
+    });
+    const swiper = new Swiper($(this).find(".swiper.is-product-gallery")[0], {
+      mousewheel: {
+        forceToAxis: true
+      },
+      thumbs: {
+        swiper: thumbsSwiper,
+        slideThumbActiveClass: "is-active",
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true
+      },
+      navigation: {
+        nextEl: $(this).find(".swiper-next")[0],
+        prevEl: $(this).find(".swiper-prev")[0],
+      }
+    });
+  }); 
+</script><script>document.addEventListener('DOMContentLoaded', function() {
+    const productRecommendationsSection = document.querySelector('.product-recommendations');
+    const url = productRecommendationsSection.dataset.url;
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+      const html = document.createElement('div');
+      html.innerHTML = text;
+      const recommendations = html.querySelector('.product-recommendations');
+      if (recommendations && recommendations.innerHTML.trim().length) {
+        productRecommendationsSection.innerHTML = recommendations.innerHTML;
+      }
+    })
+      .catch(e => {
+      console.error(e);
+    });
+  });
+</script>
 </body>
 </html>

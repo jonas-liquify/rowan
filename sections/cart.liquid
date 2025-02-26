@@ -5,6 +5,8 @@
     {% form 'cart', cart, class: 'cart_grid-wrapper' %}
 <div class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87b2-e8545e99" class="cart_table-header"><p class="text-size-regular">Product</p></div><div class="cart_table-header"><p class="text-size-regular">Quantity</p></div><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87b8-e8545e99" class="cart_table-header"><p class="text-size-regular">Price</p></div></div>{% for item in cart.items %}    <div li-for="item in cart.items" class="cart_grid">
                                     
+                            {% assign ref_id = "0" %}{% for p in item.properties %}{% assign pfirst_char = p.first | slice: 0 %}{% if pfirst_char == "_" %}{% if p.first == "_refid" %}{% assign ref_id = p.last %}{% endif %}{% endif %}{% endfor %}
+                            
                             <div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87bc-e8545e99" class="display-inlineflex"><a href="{{ item.url }}" li-object:href="item.url" id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87bd-e8545e99" class="w-inline-block"><img src="{{ item.image |  img_url: 'small' }}" li-object:src="item.image |  img_url: 'small'" alt="" class="cart_image">
 </a><div class="cart_info-order"><a href="{{ item.url }}" li-object:href="item.url" li-object="item.title" class="text-size-regular">{{ item.title }}</a><div class="hide"><p item="price" class="cart_price">$13</p><p item="original-price" class="cart_price away">$18</p></div></div></div>
                             
