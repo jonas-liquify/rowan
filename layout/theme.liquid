@@ -25,7 +25,7 @@
               <link rel="apple-touch-icon" type="image/png" href="{{ settings.apple_touch_icon | img_url: '32x32' }}">
             {% endif %}
         
-{% - assign excludedCollections = "show-in-designer,customized" | split: ',' -%}{% - if excludedCollections contains collection.handle -%}<meta name="robots" content="noindex, nofollow">{% - endif -%}{% if template.suffix == 'imp_noindex' %}<meta name="robots" content="noindex, nofollow">{% endif %}<!--  Favicon  -->
+{% assign excludedCollections = "show-in-designer,customized" | split: ',' %}{% if excludedCollections contains collection.handle %}<meta name="robots" content="noindex, nofollow">{% endif %}{% if template.suffix == 'imp_noindex' %}<meta name="robots" content="noindex, nofollow">{% endif %}<!--  Favicon  -->
 <link rel="manifest" href="https://raw.githubusercontent.com/Cardow-Co/The-Print-Garage/refs/heads/main/manifest.webmanifest">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: no-preference)">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
