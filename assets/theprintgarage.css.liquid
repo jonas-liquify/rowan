@@ -38,7 +38,6 @@
   --shades-beige--beige200: #faf4e7;
   --base-color-brand--orange: #f66718;
   --background-color--background-quinary: var(--shades-beige--beige200);
-  --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
   --base-color-brand--purple: #753d9e;
   --base-color-brand--red: #d0244c;
   --border-radius--large: 3.125rem;
@@ -55,6 +54,7 @@
   --shadow-size--y-large: 1rem;
   --border-radius--xxlarge: 4.375rem;
   --link-color--link-alternate: var(--base-color-neutral--neutral-lightest);
+  --accessible-components-dark-grey\<deleted\|variable-c4d8099c\>: #9b9b9b;
   --shades-beige--beige100: #fdfaf5;
   --brand-fonts--primary: Newake, sans-serif;
   --brand-fonts--secondary: itc-avant-garde-gothic-pro, sans-serif;
@@ -2151,7 +2151,7 @@ figcaption {
 }
 
 .swiper-slide.is-product-thumbnail.is-active {
-  border: 1px solid var(--accessible-components-dark-grey\<deleted\|variable-c4d8099c\>);
+  border: 1px solid var(--border-color--border-primary);
 }
 
 .swiper_button-wrapper {
@@ -2172,7 +2172,7 @@ figcaption {
 .swiper_button {
   border: 1px solid var(--border-color--border-primary);
   border-radius: var(--border-radius--full);
-  background-color: var(--base-color-brand--beige);
+  background-color: var(--base-color-neutral--neutral-lightest);
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -2504,7 +2504,7 @@ figcaption {
   flex: 1;
 }
 
-.product-header_ad-to-cart-wrapper {
+.product-header_add-to-cart-wrapper {
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
   flex-direction: column;
@@ -2677,11 +2677,13 @@ figcaption {
 .product-header_quantity {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
+  flex-flow: column;
   display: flex;
 }
 
 .product-header_radio {
-  background-color: var(--background-color--background-primary);
+  border-radius: var(--border-radius--xsmall);
+  background-color: var(--base-color-neutral--neutral-lightest);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -2705,6 +2707,7 @@ figcaption {
 
 .product-header_radio-button {
   border-radius: var(--border-radius--xsmall);
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -2722,8 +2725,7 @@ figcaption {
 }
 
 .product-header_radio-button.w--redirected-checked {
-  border: .125rem solid var(--border-color--border-primary);
-  background-color: var(--background-color--background-secondary);
+  border: .125rem solid var(--base-color-brand--orange);
 }
 
 .product-header_radio-button.w--redirected-focus-visible {
@@ -2743,7 +2745,7 @@ figcaption {
   display: flex;
 }
 
-.product-header_lieferzeit-icon {
+.product-header_delivery-icon {
   flex: none;
   width: 1.5rem;
   height: 1.5rem;

@@ -25,7 +25,7 @@
               <link rel="apple-touch-icon" type="image/png" href="{{ settings.apple_touch_icon | img_url: '32x32' }}">
             {% endif %}
         
-<!--  Favicon  -->
+{% - assign excludedCollections = "show-in-designer,customized" | split: ',' -%}{% - if excludedCollections contains collection.handle -%}<meta name="robots" content="noindex, nofollow">{% - endif -%}{% if template.suffix == 'imp_noindex' %}<meta name="robots" content="noindex, nofollow">{% endif %}<!--  Favicon  -->
 <link rel="manifest" href="https://raw.githubusercontent.com/Cardow-Co/The-Print-Garage/refs/heads/main/manifest.webmanifest">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: no-preference)">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/0746/7768/2449/files/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
@@ -51,7 +51,33 @@
 <script async="" src="https://cdn.jsdelivr.net/gh/manuelogomigo/flowscriipt/auto-update-year/script.js"></script><!--  [Attributes by Finsweet] Disable scrolling  -->
 <script defer="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"></script><!--  Lenis CSS  -->
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css">
-<script src="{{ '_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
+<script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ article.title }} ",
+      "image": "{{ article.image | img_url: 'medium' }}",
+      "genre": "{{ blog.title }}",
+       "mainEntityOfPage": {
+          "@type": "WebPage",
+           "@id": "{{ article.url }}"
+      },
+      "publisher": {
+       "@type": "Organization",
+        "name": "{{ shop.address.company }}",
+        "email": "{{ shop.email }}",
+        "address": "{{ shop.address }}"
+      },
+      "url": "{{ article.url }}",
+      "datePublished": "{{ article.published_at }}",
+      "dateCreated": "{{ article.created_at }}",
+      "dateModified": "{{ article.updated_at }}",
+      "description": "{{ page_description }}",
+        "author": {
+         "@type": "Person",
+         "name": "{{ shop.address.company }}"
+       }
+      }
+</script><script src="{{ '_helper.js' | asset_url }}" type="text/javascript"></script>{{ content_for_header }}</head>
 <body li-page="article">
 
 <div class="page-wrapper">{% render 'global_styles' %}
@@ -66,6 +92,6 @@ const lenis = new Lenis({
 </script>{% render 'search_javascript' %}
 <!--  Start of HubSpot Embed Code  -->
 <script type="text/javascript" id="hs-script-loader" async="" defer="" src="https://js.hs-scripts.com/5189439.js?businessUnitId=843832"></script><!--  End of HubSpot Embed Code  -->
-
+{% include 'xe_include' %}
 </body>
 </html>
