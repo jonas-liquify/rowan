@@ -1,0 +1,32 @@
+{
+    "sections": {
+        "hero_banner": {
+            "type": "hero_banner"
+        },
+        "hero_banner_alternate": {
+            "type": "hero_banner_alternate"
+        },
+        "layout_241": {
+            "type": "layout_241"
+        },
+        "layout_250": {
+            "type": "layout_250"
+        },
+        "two_testimonial": {
+            "type": "two_testimonial"
+        },
+        "cta_7": {
+            "type": "cta_7"
+        }
+    },
+    "layout": "page.planner",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "hero_banner",
+        "hero_banner_alternate",
+        "layout_241",
+        "layout_250",
+        "two_testimonial",
+        "cta_7"
+    ]
+}

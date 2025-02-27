@@ -1,30 +1,78 @@
-<div class="padding-global padding-section-small"><div class="container-large"><div class="headline-wrapper"><h2 id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87aa-e8545e99" class="heading-style-h2">
+<div class="w-embed w-script"><script>console.log({{ cart | json }});
+</script></div><div class="padding-global padding-section-small"><div id="cart-items" x-data="mc_handlecart()" x-init="$nextTick(() => { activateLinks() })" data-id="{{ section.id }}" class="container-large"><div class="headline-wrapper"><h2 id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a69b-eecc0480" class="heading-style-h2">
 {{ section.settings.text_heading }}
 </h2>
-<a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="text-size-small text-style-link hide-mobile-landscape">Continue shopping</a></div>{% if cart.item_count > 0 %}    <div li-if="cart.item_count > 0" class="w-form">
+<a href="{{ routes.root_url }}" li-object:href="routes.root_url" class="text-size-small text-style-link hide-mobile-landscape">Continue shopping</a></div>{% if cart.item_count > 0 %}    <div li-if="cart.item_count > 0" class="cart_form-block w-form">
     {% form 'cart', cart, class: 'cart_grid-wrapper' %}
-<div class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87b2-e8545e99" class="cart_table-header"><p class="text-size-regular">Product</p></div><div class="cart_table-header"><p class="text-size-regular">Quantity</p></div><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87b8-e8545e99" class="cart_table-header"><p class="text-size-regular">Price</p></div></div>{% for item in cart.items %}    <div li-for="item in cart.items" class="cart_grid">
+<div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6a1-eecc0480" class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6a3-eecc0480" class="cart_table-header"><p class="text-size-regular">Product</p></div><div class="cart_table-header"><p class="text-size-regular">Quantity</p></div><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6a9-eecc0480" class="cart_table-header"><p class="text-size-regular">Price</p></div></div><div class="code-embed-9 w-embed"> 
+{% assign controlId = "" %} 
+{% assign firstChild = "" %}
+</div>{% assign show=true %}
+<div li-for:inside="item in cart.items" class="cart-items-wrapper">
+        {% for item in cart.items %}                            
+                            <div class="code-embed-7 w-embed"> 
+                {% assign isChild = false %}
+                {% assign isBuilderProduct = false %}
+                {% assign secondChild=false %}
+                {% if item.properties["_matchlessBuilderId"] and item.properties["_matchlessBuilderId"] != "" %}
+                  {% assign isBuilderProduct = true %}
+                  {% if item.properties["_matchlessBuilderId"] != controlId %}
+                    {% assign controlId = item.properties["_matchlessBuilderId"] %}
+                    {% assign isChild=false %}
+                    {% assign firstChild = false %}
+                  {% else %}
+                    {% assign isChild=true %}
+                    {% if firstChild %}
+                      {% assign secondChild=true %}
+                    {% else %}
+                      {% assign firstChild=true %}
+                      {% assign secondChild=false %}
+                    {% endif %}
+                  {% endif %}
+                {% else %}
+                  {% assign controlId="" %}
+                {% endif %}
+</div>
+                            
+                            {% unless isChild %}    <div li-unless="isChild" class="cart_grid">
+    <div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6ad-eecc0480" class="display-inlineflex"><a href="{{ item.url }}" li-object:href="item.url" id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6ae-eecc0480" class="w-inline-block"><img li-object:src="item.image |  img_url: 'small'" src="{{ item.image |  img_url: 'small' }}" alt="" class="cart_image">
+</a><div class="cart_info-order"><a href="{{ item.url }}" li-object:href="item.url" li-object="item.title" class="text-size-regular text-weight-bold">{{ item.title }}</a>{% if item.sku != '' %}    <div li-if="item.sku != ''" class="cart-item-props">
+    <div class="line-item-property"><p class="cart_item-prop-label text-weight-semibold text-size-small">SKU</p><p li-object="item.sku" class="cart_item-prop-val text-size-small">{{ item.sku }}</p></div>    </div>
+{% endif %}{% for prop in item.properties %}    <div li-for="prop in item.properties" class="cart-item-props">
                                     
-                            {% assign ref_id = "0" %}{% for p in item.properties %}{% assign pfirst_char = p.first | slice: 0 %}{% if pfirst_char == "_" %}{% if p.first == "_refid" %}{% assign ref_id = p.last %}{% endif %}{% endif %}{% endfor %}
+                            <div class="code-embed-8 w-embed"> 
+{% assign property_first_char = prop.first | slice: 0 %}
+</div>
                             
-                            <div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87bc-e8545e99" class="display-inlineflex"><a href="{{ item.url }}" li-object:href="item.url" id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87bd-e8545e99" class="w-inline-block"><img src="{{ item.image |  img_url: 'small' }}" li-object:src="item.image |  img_url: 'small'" alt="" class="cart_image">
-</a><div class="cart_info-order"><a href="{{ item.url }}" li-object:href="item.url" li-object="item.title" class="text-size-regular">{{ item.title }}</a><div class="hide"><p item="price" class="cart_price">$13</p><p item="original-price" class="cart_price away">$18</p></div></div></div>
-                            
-                            <div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87c7-e8545e99" class="cart_table-item anzahl"><div class="cart_quantity-wrapper"><div>Quantity</div><input class="cart_quantity w-input" li-object:value="item.quantity" maxlength="256" name="updates[]-2" data-name="Updates 2" placeholder="1" type="number" id="updates[]-2" required="" value="{{ item.quantity }}">
-</div><a href="{{ item.url_to_remove }}" li-object:href="item.url_to_remove" class="text-size-tiny text-style-link text-align-center w-inline-block"><div li-object:url="item.url_to_remove" url="{{ item.url_to_remove }}">Remove</div></a></div>
-                            
-                            <div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87cf-e8545e99" class="cart_price-info"><div li-object="item.final_line_price | money" class="text-size-regular">{{ item.final_line_price | money }}</div>{% if item.original_line_price > item.final_line_price %}    <div li-if="item.original_line_price > item.final_line_price">
-    <div li-object="item.original_line_price | money" class="text-size-regular text-style-strikethrough">{{ item.original_line_price | money }}</div>    </div>
-{% endif %}</div>
+                            {% if prop.last != blank and property_first_char != '_' %}    <div li-if="prop.last != blank and property_first_char != '_'" class="line-item-property">
+    <p li-object="prop.first" class="cart_item-prop-label text-weight-semibold text-size-small">{{ prop.first }}</p><p li-object="prop.last" class="cart_item-prop-val text-size-small">{{ prop.last }}</p>    </div>
+{% endif %}
                             
                         </div>
-{% endfor %}</div><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87d5-e8545e99" class="cart_wrapper-right"><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87d6-e8545e99" class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87d8-e8545e99" class="cart_table-header"><p class="text-size-regular">Summary</p></div></div><div class="cart_content"><div class="cart_wrapper"><div class="cart_details-wrapper"><div class="text-size-regular">Total <span class="text-size-tiny">(incl. GST.)</span></div><div class="cart_details-price">{% if cart.total_discounts > 0 %}    <div li-if="cart.total_discounts > 0">
+{% endfor %}</div></div><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6b8-eecc0480" class="cart_table-item anzahl"><div x-data="{ quantity: {{ item.quantity }} }" class="cart_quantity-wrapper-bold"><div>Quantity</div><input class="cart_quantity w-input" li-object:value="item.quantity" maxlength="256" name="updates[]" data-name="updates[]" data-index="{{ item.index }}" placeholder="1" x-model="quantity" x-on:change="updateLineQty" type="number" id="updates[]" required="" value="{{ item.quantity }}">
+</div><a href="#" x-on:click="updateLine" data-index="{{ item.index }}" class="text-size-tiny text-style-link text-align-center w-inline-block"><div data-index="{{ item.index }}">Remove</div></a></div><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6c0-eecc0480" class="cart_price-info"><div li-object="item.final_line_price | money" class="text-size-regular">{{ item.final_line_price | money }}</div>{% if item.original_line_price > item.final_line_price %}    <div li-if="item.original_line_price > item.final_line_price">
+    <div li-object="item.original_line_price | money" class="text-size-regular text-style-strikethrough">{{ item.original_line_price | money }}</div>    </div>
+{% endif %}</div>    </div>
+{% endunless %}
+                            
+                            {% if isChild and firstChild %}    <div li-if="isChild and firstChild" class="cart_grid-includes">
+    <div id="w-node-_92a77579-de66-fbf8-84af-073a3455b84d-eecc0480" class="display-inlineflex"><div class="child-row-spacer"></div><div class="cart_info-order"><a href="#" class="text-size-small text-weight-semibold">Included Options</a></div></div>    </div>
+{% endif %}
+                            
+                            {% if isChild %}    <div li-if="isChild" class="cart_grid-child">
+    <div id="w-node-_673b66a7-8f2d-756d-508c-b145ef6547d1-eecc0480" class="display-inlineflex"><div class="child-row-spacer"></div><div class="cart_info-order"><a href="{{ item.url }}" li-object:href="item.url" li-object="item.title" class="text-size-small">{{ item.title }}</a><div class="hide"><p item="price" class="cart_price">$13</p><p item="original-price" class="cart_price away">$18</p></div></div></div><div id="w-node-_673b66a7-8f2d-756d-508c-b145ef6547dc-eecc0480" class="cart_table-item anzahl"><div class="cart_quantity-wrapper"><div class="text-weight-light text-size-small">Quantity</div><input class="cart_quantity w-input" li-object:value="item.quantity" maxlength="256" name="updates[]" data-name="updates[]" placeholder="1" type="number" id="updates[]" required="" readonly value="{{ item.quantity }}">
+</div></div><div id="w-node-_673b66a7-8f2d-756d-508c-b145ef6547e4-eecc0480" class="cart_price-info"><div li-object="item.final_line_price | money" class="text-size-small">{{ item.final_line_price | money }}</div>{% if item.original_line_price > item.final_line_price %}    <div li-if="item.original_line_price > item.final_line_price">
+    <div li-object="item.original_line_price | money" class="text-size-small text-style-strikethrough">{{ item.original_line_price | money }}</div>    </div>
+{% endif %}</div>    </div>
+{% endif %}
+                            
+                    {% endfor %}    </div>
+</div><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6c6-eecc0480" class="cart_wrapper-right"><div class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6e3-eecc0480" class="cart_table-header"><p class="text-size-regular">Notes</p></div></div><div class="cart_content"><div class="filter_form-field-wrapper"><p class="paragraph-3">Please leave any important notes or details for our team. Please contact our team before making special requests, as they cannot be guaranteed. </p><textarea class="form_input is-text-area w-input" maxlength="5000" name="note" data-name="field" li-object="cart.note" placeholder="" id="CartNote">{{ cart.note }}</textarea></div></div></div><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6c7-eecc0480" class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-c3c856e0-3a2a-ac02-2563-a3dff2c4a6c9-eecc0480" class="cart_table-header"><p class="text-size-regular">Summary</p></div></div><div class="cart_content"><div class="cart_wrapper"><div class="cart_details-wrapper"><div class="text-size-regular">Subtotal</div><div class="cart_details-price">{% if cart.total_discounts > 0 %}    <div li-if="cart.total_discounts > 0">
     <div li-object="cart.original_total_price | money" class="text-style-strikethrough">{{ cart.original_total_price | money }}</div>    </div>
 {% endif %}<div li-object="cart.total_price | money" class="heading-style-h3">{{ cart.total_price | money }}</div></div></div>{% if cart.total_discounts > 0 %}    <div li-if="cart.total_discounts > 0" class="cart_details-wrapper">
-    <div class="text-size-regular">Discount</div><div li-object="cart.total_discount | money">{{ cart.total_discount | money }}</div>    </div>
+    <div class="text-size-regular">Discounts</div><div li-object="cart.total_discount | money">{{ cart.total_discount | money }}</div>    </div>
 {% endif %}</div><div class="cart_action"><input type="submit" data-wait="Please wait..." class="button w-button" value="Checkout" name="checkout">
-<input type="submit" data-wait="Please wait..." class="button is-outline w-button" value="Update cart">
-</div></div></div><div class="cart_table outline-solid-1"><div class="cart_grid is-header w-hidden-tiny"><div id="w-node-_50f76717-576d-5a4f-7bde-0a22446d87f2-e8545e99" class="cart_table-header"><p class="text-size-regular">Comment</p></div></div><div class="cart_content"><div class="form_field-wrapper"><textarea class="form_input is-text-area w-input" maxlength="5000" name="note" data-name="field" placeholder="Comment" id="CartNote"></textarea></div></div></div></div>{% endform %}
+</div></div></div></div>{% endform %}
 <div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div>    </div>
 {% endif %}{% if cart.item_count == 0 %}    <div li-if="cart.item_count == 0" class="cart_empty outline-solid-1">
     <div>

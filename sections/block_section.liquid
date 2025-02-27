@@ -1,0 +1,21 @@
+<div class="padding-global padding-section-medium"><div class="container-large"><div li-content-for-blocks="" class="padding-section-large">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    <div li-content-for-blocks="">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+    {% endcase %}
+{% endfor %}
+
+</div>
+
+</div></div> {% schema %} {"tag":"section","name":"Block Section","class":"section_default","presets":[{"name":"Block Section","category":"Liquify","blocks":[]}]} {% endschema %}

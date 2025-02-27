@@ -1,0 +1,13 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="product3_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-small"><h2 class="heading-style-h2">
+{{ section.settings.text_section_header }}
+</h2>
+</div><div class="text-size-medium"> {{ section.settings.richtext_section_description }} </div>
+</div></div><div class="product_list-wrapper w-dyn-list"><div role="list" class="product_list w-dyn-items">{% for product in section.settings.collection_collection.products limit: section.settings.collection_collection_limit %}
+<div role="listitem" class="product_list-item w-dyn-item">
+    
+    {% render 'product_card_clean', product: product %}
+
+    
+</div>
+{% endfor %}
+</div><div class="hide-5 w-dyn-empty"><div>No items found.</div></div></div><div class="margin-top margin-xxlarge"><div class="button-group is-center"><a li-object:href="section.settings.collection_collection.url" href="{{ section.settings.collection_collection.url }}" class="button is-secondary w-button">View all</a></div></div></div></div></div></div> {% schema %} {"tag":"section","name":"collection-grid","class":"section-collection-grid","settings":[{"id":"text_section_header","type":"text","label":"Section Header","default":"Collection"},{"id":"richtext_section_description","type":"richtext","label":"Section Description","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>"},{"id":"collection_collection","type":"collection","label":"Collection"},{"type":"range","id":"collection_collection_limit","min":1,"max":99,"step":1,"label":"Limit: Collection","default":6}],"presets":[{"name":"collection-grid","category":"Liquify","blocks":[]}]} {% endschema %}

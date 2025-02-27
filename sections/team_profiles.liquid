@@ -1,0 +1,33 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="about_team_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-small"><h1 class="heading-style-h1">
+{{ section.settings.text_headline }}
+</h1>
+</div><div class="text-size-medium"> {{ section.settings.richtext_subheading }} </div>
+</div></div><div class="about_team_list-wrapper"><div li-content-for-blocks="" class="w-layout-grid about_team_list">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    {% when 'profile-block' %}
+            <div li-block="Profile Block" class="about_team_item">
+                    
+                    <div class="margin-bottom margin-small"><div class="team1_image-wrapper"><img loading="lazy" alt="{{ block.settings.image_profile_pic.alt }}" src="{{ block.settings.image_profile_pic | img_url: 'master' }}" class="team10_image-2">
+</div></div>
+                    
+                    <div class="margin-bottom margin-xsmall"><div class="about_team_title-wrapper"><div class="text-size-large text-weight-semibold">
+{{ block.settings.text_name }}
+</div>
+<div class="text-size-medium">
+{{ block.settings.text_title }}
+</div>
+</div></div>
+                    
+                    <div> {{ block.settings.richtext_bio }} </div>
+
+                    
+                </div>
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+</div></div></div></div></div> {% schema %} {"tag":"section","name":"Team Profiles","class":"section_about_team","blocks":[{"name":"Profile Block","type":"profile-block","settings":[{"id":"image_profile_pic","type":"image_picker","label":"Profile Pic"},{"id":"text_name","type":"text","label":"Name","default":"Full name"},{"id":"text_title","type":"text","label":"Title","default":"Job title"},{"id":"richtext_bio","type":"richtext","label":"Bio","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.<\/p>"}]}],"settings":[{"id":"text_headline","type":"text","label":"Headline","default":"Our team"},{"id":"richtext_subheading","type":"richtext","label":"Subheading","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>"}],"presets":[{"name":"Team Profiles","category":"Liquify","blocks":[{"type":"profile-block"}]}]} {% endschema %}

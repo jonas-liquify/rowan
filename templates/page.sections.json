@@ -1,0 +1,60 @@
+{
+    "sections": {
+        "vertical_scroll": {
+            "type": "vertical_scroll"
+        },
+        "features_dark_static": {
+            "type": "features_dark_static"
+        },
+        "features_dark": {
+            "type": "features_dark"
+        },
+        "two_card": {
+            "type": "two_card"
+        },
+        "big_hero": {
+            "type": "big_hero"
+        },
+        "testimonial": {
+            "type": "testimonial"
+        },
+        "landing_feature": {
+            "type": "landing_feature"
+        },
+        "grill_carts_w_logos": {
+            "type": "grill_carts_w_logos"
+        },
+        "reviews_header": {
+            "type": "reviews_header"
+        },
+        "default_header": {
+            "type": "default_header"
+        },
+        "blog_list": {
+            "type": "blog_list"
+        },
+        "blog_post_header": {
+            "type": "blog_post_header"
+        },
+        "blog_content": {
+            "type": "blog_content"
+        }
+    },
+    "layout": "page.sections",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "vertical_scroll",
+        "features_dark_static",
+        "features_dark",
+        "two_card",
+        "big_hero",
+        "testimonial",
+        "landing_feature",
+        "grill_carts_w_logos",
+        "reviews_header",
+        "default_header",
+        "blog_list",
+        "blog_post_header",
+        "blog_content"
+    ]
+}

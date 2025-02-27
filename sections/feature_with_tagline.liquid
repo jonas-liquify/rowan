@@ -1,0 +1,14 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="about_about_component"><div class="w-layout-grid about_about_content"><div class="about_about_content-left">{% if section.settings.checkbox_show_tagline == true %}
+<div class="margin-bottom margin-xsmall"><div class="text-style-tagline">
+{{ section.settings.text_tagline }}
+</div>
+</div>{% endif %}
+<div class="margin-bottom margin-small"><h2 class="heading-style-h2">
+{{ section.settings.text_headline }}
+</h2>
+</div><div class="text-size-medium"> {{ section.settings.richtext_body }} </div>
+<div class="margin-medium margin-top">{% if section.settings.checkbox_show_button == true %}
+<div class="button-group"><a href="{{ section.settings.url_link }}" class="button is-secondary w-inline-block"> <div>{{ section.settings.text_link_text }}</div> </a>
+</div>{% endif %}
+</div></div><div class="about_about_image-wrapper"><img loading="lazy" src="{{ 'placeholder-image.svg' | asset_url }}" alt="" class="about_about_image">
+</div></div></div></div></div></div> {% schema %} {"tag":"section","name":"Feature With Tagline","class":"section_about_about","settings":[{"id":"checkbox_show_tagline","type":"checkbox","label":"Show Tagline","default":true},{"id":"text_tagline","type":"text","label":"Tagline","default":"Tagline"},{"id":"text_headline","type":"text","label":"Headline","default":"Medium length section heading goes here"},{"id":"richtext_body","type":"richtext","label":"Body","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.<\/p>"},{"id":"checkbox_show_button","type":"checkbox","label":"Show Button","default":true},{"id":"url_link","type":"url","label":"Link"},{"id":"text_link_text","type":"text","label":"Link Text","default":"Button"}],"presets":[{"name":"Feature With Tagline","category":"Liquify","blocks":[]}]} {% endschema %}
