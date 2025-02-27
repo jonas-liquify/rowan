@@ -1,0 +1,31 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout311_component"><div class="margin-bottom margin-xxlarge"><div class="w-layout-grid layout311_content"><div class="layout311_content-left"><h2 class="heading-style-h3">
+{{ section.settings.text_headline }}
+</h2>
+</div><div class="layout311_content-right"><div class="text-size-medium"> {{ section.settings.richtext_long_body }} </div>
+</div></div></div><div li-content-for-blocks="" class="w-layout-grid layout311_list">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    {% when 'content-block' %}
+            <div li-block="Content Block" id="w-node-_9a75082d-faca-03f4-e842-d0f362421489-8e283031" class="layout311_item">
+                    
+                    <div class="layout311_item-icon-wrapper"><img loading="lazy" alt="{{ block.settings.image_icon.alt }}" src="{{ block.settings.image_icon | img_url: 'master' }}" class="icon-1x1-medium">
+</div>
+                    
+                    <div class="layout311_item-text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h5">
+{{ block.settings.text_title }}
+</h3>
+</div><p>
+{{ block.settings.text_description }}
+</p>
+<div class="margin-top"><div class="button-group"><a href="{{ block.settings.url_link }}" class="button is-link w-inline-block"> <div>{{ block.settings.text_button_text }}</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"></path></svg></div> </a>
+</div></div></div>
+                    
+                </div>
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+</div></div></div></div> {% schema %} {"tag":"section","name":"Landing Feature","class":"section_layout311","blocks":[{"name":"Content Block","type":"content-block","settings":[{"id":"image_icon","type":"image_picker","label":"Icon"},{"id":"text_title","type":"text","label":"Title","default":"Medium length section heading goes here"},{"id":"text_description","type":"text","label":"Description","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla."},{"id":"url_link","type":"url","label":"Link"},{"id":"text_button_text","type":"text","label":"Button Text","default":"Button"}]}],"settings":[{"id":"text_headline","type":"text","label":"Headline","default":"Long heading is what you see here in this feature section"},{"id":"richtext_long_body","type":"richtext","label":"Long Body","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.<\/p>"}],"presets":[{"name":"Landing Feature","category":"Liquify","blocks":[{"type":"content-block"}]}]} {% endschema %}

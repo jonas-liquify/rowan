@@ -1,0 +1,37 @@
+<div class="padding-global"><div class="container-large"><div class="filters_top"><div class="filter_headline"><h1 li-object="collection.title" class="heading-style-h2">{{ collection.title }}</h1></div><div class="spacer-large-2"></div></div><div id="w-node-_2708221b-9ecb-0d3b-c20a-5a751f7a88c7-1c520528" class="filter_feed_lg"><div class="filter_feed-header"><div></div><select id="sort-by" li-for:inside="option in collection.sort_options" class="sort_select filter_checkbox">
+        {% for option in collection.sort_options %}                            
+                            <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% elsif option.value == collection.default_sort_by %}selected{% endif %}>{{ option.name }}</option>
+                            
+                    {% endfor %}    </select>
+</div><div class="filter_product-list-wrapper w-dyn-list"><div role="list" class="filter_product-list-wide w-dyn-items">{% for product in collection.products %}    <div li-for="product in collection.products" role="listitem" class="filter_product-list-item w-dyn-item">
+                                    
+                            {% render 'product_card_clean', product: product %}
+
+                            
+                        </div>
+{% endfor %}</div>{% if collection.products == blank %}    <div li-if="collection.products == blank" class="filter_empty w-dyn-empty">
+    <div class="heading-style-h6">No results found.</div><div class="spacer-xxsmall"></div><div>There are no results with this criteria. Try changing your search.</div>    </div>
+{% endif %}</div>{% if paginate.pages > 1 %}    <nav li-if="paginate.pages > 1" class="pagination_component">
+    <ul role="list" class="pagination_list w-list-unstyled">{% if paginate.previous %}    <li li-if="paginate.previous" class="pagination_item">
+    <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon w-inline-block"><div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img"><path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path></svg></div><div>Back</div></a>    </li>
+{% endif %}{% if paginate.previous == false %}    <li li-if="paginate.previous == false" class="pagination_item">
+    <a li-object:href="paginate.previous.url" href="{{ paginate.previous.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block"><div class="pagination_arrow w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img"><path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path></svg></div><div>Back</div></a>    </li>
+{% endif %}{% for part in paginate.parts %}    <li li-for="part in paginate.parts" class="pagination_item">
+                                    
+                            {% if part.is_link %}    <div li-if="part.is_link">
+    <a li-object:href="part.url" href="{{ part.url }}" class="pagination_count w-inline-block"><div li-object="part.title" class="text-style-link">{{ part.title }}</div></a>    </div>
+{% endif %}
+                            
+                            {% if part.is_link == false %}    <div li-if="part.is_link == false">
+    {% if part.is_link != true %}    <div li-if="part.is_link != true">
+    <div><div li-object="part.title" class="{% if part.title == paginate.current_page %}text-weight-semibold{% endif %}">{{ part.title }}</div></div>    </div>
+{% endif %}    </div>
+{% endif %}
+                            
+                        </li>
+{% endfor %}{% if paginate.next == false %}    <li li-if="paginate.next == false" class="pagination_item">
+    <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon text-style-muted pointer-events-off w-inline-block"><div>Next</div><div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img"><path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path></svg></div></a>    </li>
+{% endif %}{% if paginate.next %}    <li li-if="paginate.next" class="pagination_item">
+    <a li-object:href="paginate.next.url" href="{{ paginate.next.url }}" class="button is-secondary is-icon w-inline-block"><div>Next</div><div class="pagination_arrow is-right w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 13 8" fill="none" preserveaspectratio="xMidYMid meet" aria-hidden="true" role="img"><path d="M1.67318 0.589844L6.26318 5.16984L10.8532 0.589844L12.2632 1.99984L6.26318 7.99984L0.263184 1.99984L1.67318 0.589844Z" fill="currentColor"></path></svg></div></a>    </li>
+{% endif %}</ul>    </nav>
+{% endif %}</div></div></div> {% schema %} {"tag":"div","name":"collection_nofilters","class":"section_filters","presets":[{"name":"collection_nofilters","category":"Liquify","blocks":[]}]} {% endschema %}

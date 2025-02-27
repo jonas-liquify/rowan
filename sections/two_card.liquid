@@ -1,0 +1,23 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout361_component"><div class="margin-bottom margin-xxlarge"><div class="text-align-center"><div class="max-width-large"><div class="margin-bottom margin-small"><h2 class="heading-style-h2">
+{{ section.settings.text_heading }}
+</h2>
+</div><p class="text-size-medium">
+{{ section.settings.text_description }}
+</p>
+</div></div></div><div class="w-layout-grid layout361_grid-list"><div class="w-layout-grid layout361_row"><div class="layout361_card"><div class="layout361_image-wrapper"><img loading="lazy" alt="{{ section.settings.image_image_1.alt }}" src="{{ section.settings.image_image_1 | img_url: 'master' }}" class="layout361_image">
+</div><div class="layout361_card-content"><div class="layout361_card-content-top"><div class="margin-bottom margin-small"><h3 class="heading-style-h3">
+{{ section.settings.text_left_heading }}
+</h3>
+</div><p>
+{{ section.settings.text_left_description }}
+</p>
+</div><div class="margin-top margin-medium"><div class="button-group"><a href="{{ section.settings.url_left_link }}" class="button w-inline-block"> <div>{{ section.settings.text_left_link_text }}</div> </a>
+</div></div></div></div><div class="layout361_card"><div id="w-node-_7895a32e-a5d3-8591-3890-84d146eca84e-8e283031" class="layout361_image-wrapper"><img loading="lazy" alt="{{ section.settings.image_image_2.alt }}" src="{{ section.settings.image_image_2 | img_url: 'master' }}" class="layout361_image">
+</div><div class="layout361_card-content"><div class="layout361_card-content-top"><div class="margin-bottom margin-small"><h3 class="heading-style-h3">
+{{ section.settings.text_right_heading }}
+</h3>
+</div><p>
+{{ section.settings.text_right_description }}
+</p>
+</div><div class="margin-top margin-medium"><div class="button-group"><a href="{{ section.settings.url_right_link }}" class="button w-inline-block"> <div>{{ section.settings.text_right_link_text }}</div> </a>
+</div></div></div></div></div></div></div></div></div></div> {% schema %} {"tag":"section","name":"Two Card","class":"section_layout361","settings":[{"id":"text_heading","type":"text","label":"Heading","default":"Short heading goes here"},{"id":"text_description","type":"text","label":"Description","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "},{"id":"image_image_1","type":"image_picker","label":"Image 1"},{"id":"text_left_heading","type":"text","label":"Left Heading","default":"Medium length section heading goes here<br\/>"},{"id":"text_left_description","type":"text","label":"Left Description","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."},{"id":"url_left_link","type":"url","label":"Left Link"},{"id":"text_left_link_text","type":"text","label":"Left Link Text","default":"Button"},{"id":"image_image_2","type":"image_picker","label":"Image 2"},{"id":"text_right_heading","type":"text","label":"Right Heading","default":"Medium length section heading goes here"},{"id":"text_right_description","type":"text","label":"Right Description","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."},{"id":"url_right_link","type":"url","label":"Right Link"},{"id":"text_right_link_text","type":"text","label":"Right Link Text","default":"Button"}],"presets":[{"name":"Two Card","category":"Liquify","blocks":[]}]} {% endschema %}

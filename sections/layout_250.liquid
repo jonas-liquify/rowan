@@ -1,0 +1,33 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="layout250_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><h2 class="heading-style-h2">Quick-Start Templates</h2></div><div class="margin-medium margin-top"><div class="button-group-stretch"><a href="{{ section.settings.url_planner_link }}" class="button is-link is-icon w-inline-block"> <div>{{ section.settings.text_planner_link_text }}</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"></path></svg></div> </a>
+</div></div></div><div li-content-for-blocks="" class="w-layout-grid layout250_list">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    {% when 'template' %}
+            <div li-block="Template" class="layout250_item">
+                    
+                    <div class="margin-bottom margin-medium"><div class="home4-features_image-wrapper"><img loading="lazy" alt="{{ block.settings.image_template_preview_imagee.alt }}" src="{{ block.settings.image_template_preview_imagee | img_url: 'master' }}" class="layout250_image">
+</div></div>
+                    
+                    <div class="margin-bottom margin-xsmall"><h3 class="heading-style-h5">
+{{ block.settings.text_template_title }}
+</h3>
+<div class="div-block-12"><div>Starting at*: </div><div class="template-price-text">
+{{ block.settings.text_template_price }}
+</div>
+</div></div>
+                    
+                    <div> {{ block.settings.richtext_template_description }} </div>
+
+                    
+                    <div class="margin-medium margin-top"><div class="button-group align-left"><a href="{{ block.settings.url_template_link }}" class="button is-link is-icon w-inline-block"> <div>Configure & Price</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"></path></svg></div> </a>
+</div></div>
+                    
+                </div>
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+<div class="margin-medium margin-top"><div class="button-group"><div class="text-disclaimer">*Prices shown before shipping & tax</div></div></div></div></div></div></div> {% schema %} {"tag":"section","name":"Layout 250","class":"section_layout250","blocks":[{"name":"Template","type":"template","settings":[{"id":"image_template_preview_imagee","type":"image_picker","label":"Template Preview Imagee"},{"id":"text_template_title","type":"text","label":"Template Title","default":"Template"},{"id":"text_template_price","type":"text","label":"Template Price","default":"$9999"},{"id":"richtext_template_description","type":"richtext","label":"Template Description","default":"<p>About this template<\/p>"},{"id":"url_template_link","type":"url","label":"Template Link"}]}],"settings":[{"id":"url_planner_link","type":"url","label":"Planner Link"},{"id":"text_planner_link_text","type":"text","label":"Planner Link Text","default":"Start From Scratch"}],"presets":[{"name":"Layout 250","category":"Liquify","blocks":[{"type":"template"}]}]} {% endschema %}

@@ -1,0 +1,74 @@
+<div class="w-embed w-script"><div class="w-embed w-script"><div class="w-embed w-script"><div class="w-embed w-script"><script data-section="{{ section.id }}" data-name="metafields">let refreshMetafields = false;
+    let hasCutoutMetafields = false;
+    let calcHeight = 0;
+    let dropKitSelected = false;
+    let dropKitWidthAdjust = 3.00;
+    let dropKitHeightAdjust = 6.00;
+    let counterThickness = 0.00;
+    let cTopsRequired = false;
+    let insertVariants = [];
+    {% if product.metafields.themev2.cutout_needs_ctop %}
+      cTopsRequired = true;
+    {% endif %}
+    console.log("ctops reqd: " + cTopsRequired);
+    {% if product.metafields.custom.max_cutout_width and product.metafields.custom.max_cutout_depth and product.metafields.custom.max_cutout_height and product.metafields.custom.max_countertop_cutout %}
+            hasCutoutMetafields = true;
+            let maxCutoutWidth = {{ product.metafields.custom.max_cutout_width }};
+            let maxCutoutDepth = {{ product.metafields.custom.max_cutout_depth }};
+            let maxCutoutHeight = {{ product.metafields.custom.max_cutout_height }};
+            let maxCountertopCutout = {{ product.metafields.custom.max_countertop_cutout }};
+            let compHeight = 0;
+            if(calcHeight > 0){
+              compHeight = calcHeight;
+            }
+            else{
+              compHeight = maxCutoutHeight;
+            }
+            console.log('hasCutoutMetafields: ' + hasCutoutMetafields);
+            console.log('maxCutoutWidth: ' + maxCutoutWidth);
+            console.log('maxCutoutDepth: ' + maxCutoutDepth);
+            console.log('maxCutoutHeight: ' + maxCutoutHeight);
+            console.log('maxCountertopCutout: ' + maxCountertopCutout);
+            console.log('calcHeight: ' + calcHeight);
+            console.log('compHeight: ' + compHeight);
+    {% elsif product.selected_or_first_available_variant.metafields.custom.max_cutout_width and product.selected_or_first_available_variant.metafields.custom.max_cutout_depth and product.selected_or_first_available_variant.metafields.custom.max_cutout_height and product.selected_or_first_available_variant.metafields.custom.max_countertop_cutout  %}
+            hasCutoutMetafields = true;
+            refreshMetafields = true;
+            let maxCutoutWidth = {{ product.selected_or_first_available_variant.metafields.custom.max_cutout_width }};
+            let maxCutoutDepth = {{ product.selected_or_first_available_variant.metafields.custom.max_cutout_depth }};
+            let maxCutoutHeight = {{ product.selected_or_first_available_variant.metafields.custom.max_cutout_height }};
+            let maxCountertopCutout = {{ product.selected_or_first_available_variant.metafields.custom.max_countertop_cutout }};
+            let compHeight = 0;
+            if(calcHeight > 0){
+              compHeight = calcHeight;
+            }
+            else{
+              compHeight = maxCutoutHeight;
+            }
+            let compWidth = maxCutoutWidth;
+            let compCtop = maxCountertopCutout;
+            console.log('hasCutoutMetafields: ' + hasCutoutMetafields);
+            console.log('maxCutoutWidth: ' + maxCutoutWidth);
+            console.log('maxCutoutDepth: ' + maxCutoutDepth);
+            console.log('maxCutoutHeight: ' + maxCutoutHeight);
+            console.log('maxCountertopCutout: ' + maxCountertopCutout);
+            console.log('calcHeight: ' + calcHeight);
+            console.log('compHeight: ' + compHeight);
+    {% endif %}
+    {% if product.selected_or_first_available_variant.metafields.themev2.inserts %}
+        let varjs = "";
+        {% for mf in product.selected_or_first_available_variant.metafields.themev2.inserts.value %}
+          varjs = {
+            "id": {{ mf | json }}.id,
+            "price": {{ mf | json }}.price,
+            "name": {{ mf | json }}.name,
+            "option1": {{  mf | json }}.option1
+          };
+          {% if mf.metafields.custom.insert_height %}
+            varjs.insert_height = {{ mf.metafields.custom.insert_height }};
+          {% endif  %}
+          insertVariants.push(varjs);
+        {% endfor %}
+        console.log(insertVariants);
+    {% endif %}
+  </script></div></div></div></div> {% schema %} {"tag":"section","name":"metafields_refresher","class":"section_layout3","presets":[{"name":"metafields_refresher","category":"Liquify","blocks":[]}]} {% endschema %}

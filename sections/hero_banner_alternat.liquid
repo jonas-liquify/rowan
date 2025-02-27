@@ -1,0 +1,27 @@
+<div class="padding-global"><div class="container-large"><div class="header5_content"><div class="padding-section-large"><div class="max-width-medium"><div li-section="Video Preview Header" class="margin-bottom margin-small"><h2 class="heading-style-h2 text-color-alternate">
+{{ section.settings.text_headline }}
+</h2>
+</div><div class="margin-bottom margin-medium"><div class="text-size-medium"> {{ section.settings.richtext_body }} </div>
+</div><div class="w-layout-grid layout196_item-list"><div class="layout196_text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h6">
+{{ section.settings.text_heading_2 }}
+</h3>
+</div><p>
+{{ section.settings.text_paragraph_2 }}
+</p>
+</div><div class="layout196_text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h6">
+{{ section.settings.text_heading_3 }}
+</h3>
+</div><p>
+{{ section.settings.text_paragraph_3 }}
+</p>
+</div></div><div class="div-block-11"><div class="layout196_text-wrapper"><div class="margin-bottom margin-xsmall"><h3 class="heading-style-h6">
+{{ section.settings.text_heading_4 }}
+</h3>
+</div><p>
+{{ section.settings.text_paragraph_4 }}
+</p>
+</div></div><div class="margin-medium margin-top"><div class="button-group align-left"><a href="{{ section.settings.url_launch_url }}" class="button w-button"> Start Now </a>
+<a href="{{ section.settings.url_schedule_url }}" class="button is-alternate w-button"> Schedule a Consult </a>
+<a href="{{ section.settings.url_link_secondary }}" class="button is-link-alternate is-icon-alternate w-inline-block"> <div>{{ section.settings.text_secondary_link_text }}</div><div class="icon-embed-xxsmall w-embed"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="CurrentColor" stroke-width="1.5"></path></svg></div> </a>
+</div></div></div></div></div></div></div><div class="header5_background-image-wrapper"><div class="image-overlay-layer"></div><img loading="eager" alt="{{ section.settings.image_background_image.alt }}" src="{{ section.settings.image_background_image | img_url: 'master' }}" class="header5_background-image">
+</div> {% schema %} {"tag":"header","name":"Hero Banner Alternat","class":"section_header5 text-color-alternate","settings":[{"id":"text_headline","type":"text","label":"Headline","default":"Design Your Dream Space with Ease"},{"id":"richtext_body","type":"richtext","label":"Body","default":"<p>Our 3D planning software simplifies your design process. Create stunning layouts effortlessly and visualize your ideas.<\/p>"},{"id":"text_heading_2","type":"text","label":"Heading 2","default":"User-Friendly"},{"id":"text_paragraph_2","type":"text","label":"Paragraph 2","default":"Navigate the software with ease, no design experience required."},{"id":"text_heading_3","type":"text","label":"Heading 3","default":"Starter Templates"},{"id":"text_paragraph_3","type":"text","label":"Paragraph 3","default":"Choose from a variety of pre-designed templates to kickstart your project."},{"id":"text_heading_4","type":"text","label":"Heading 4","default":"Free Design Consults"},{"id":"text_paragraph_4","type":"text","label":"Paragraph 4","default":"Not sure where to start, or just have questions? Our team can schedule a virtual meeting to help with your design process."},{"id":"url_launch_url","type":"url","label":"Launch URL"},{"id":"url_schedule_url","type":"url","label":"Schedule URL"},{"id":"url_link_secondary","type":"url","label":"Link Secondary"},{"id":"text_secondary_link_text","type":"text","label":"Secondary Link Text","default":"Learn More"},{"id":"image_background_image","type":"image_picker","label":"Background Image"}],"presets":[{"name":"Hero Banner Alternat","category":"Liquify","blocks":[]}]} {% endschema %}

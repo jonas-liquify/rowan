@@ -1,0 +1,16 @@
+<div class="padding-global padding-section-medium"><div class="container-large"><div class="padding-bottom padding-medium"></div><div class="default_wrapper">{% if section.settings.checkbox_show_title == true %}
+<div class="padding-bottom padding-medium"><h1 class="heading-style-h1">
+{{ section.settings.text_heading }}
+</h1>
+</div>{% endif %}
+<div li-content-for-blocks="" class="div-content-block">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+</div></div></div> {% schema %} {"tag":"section","name":"Heading H1","class":"section_heading","settings":[{"id":"checkbox_show_title","type":"checkbox","label":"Show Title","default":true},{"id":"text_heading","type":"text","label":"Heading","default":"Heading H1"}],"presets":[{"name":"Heading H1","category":"Liquify","blocks":[]}]} {% endschema %}

@@ -1,0 +1,43 @@
+<div class="header_logo w-embed"></div>
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="max-width-large"><h2 class="heading-style-h3">
+{{ section.settings.text_collection_title }}
+</h2>
+<div class="spacer-small"></div><div class="text-size-medium"> {{ section.settings.richtext_collection_description }} </div>
+</div><div class="spacer-xxlarge"></div><div class="swiper-main_component"><div class="swiper gallery22_component w-dyn-list"><div role="list" class="swiper-wrapper gallery22_slider w-dyn-items">{% for product in section.settings.slider_collection.products %}    <div li-for="product in section.settings.slider_collection.products" role="listitem" class="swiper-slide gallery22_mask w-dyn-item">
+                                    
+                            <div class="gallery22_slide">{% render 'product_card_clean', product: product %}
+</div>
+                            
+                        </div>
+{% endfor %}</div><div class="empty-state w-dyn-empty"></div></div><div class="gallery22_arrow swiper-button-next"><div class="gallery22_arrow-icon w-embed"><svg width="100%" height="100%" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.6893 7.25L6.96967 1.53033L8.03033 0.469666L15.5607 8L8.03033 15.5303L6.96967 14.4697L12.6893 8.75H0.5V7.25H12.6893Z" fill="currentColor"></path></svg></div></div><div class="gallery22_arrow is-left swiper-button-prev"><div class="gallery22_arrow-icon w-embed"><svg width="100%" height="100%" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.31066 8.75001L9.03033 14.4697L7.96967 15.5303L0.439339 8.00001L7.96967 0.469676L9.03033 1.53034L3.31066 7.25001L15.5 7.25L15.5 8.75L3.31066 8.75001Z" fill="currentColor"></path></svg></div></div>{% if section.settings.checkbox_show_pagination == true %}
+<div class="swiper-pagination"><div class="swiper-pagination-bullet swiper-pagination-bullet-active"></div></div>{% endif %}
+</div>{% if section.settings.checkbox_show_all == true %}
+<div class="margin-top margin-xxlarge"><div class="button-group is-center"><a li-object:href="section.settings.slider_collection.url" href="{{ section.settings.slider_collection.url }}" class="button is-secondary w-button">View all</a></div></div>{% endif %}
+</div></div></div><div class="header_logo w-embed w-script"><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><script>var swiper = new Swiper(".swiper", {
+  breakpoints: {
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    // when window width is >= 1024
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    }
+  } ,
+  slidesPerView: 1,
+spaceBetween: 5,
+grabCursor: true,
+pagination: {
+	el: ".swiper-pagination",
+	clickable: true,
+  type: 'bullets',
+},
+loop: true,
+navigation: {
+nextEl: '.swiper-button-next',
+prevEl: '.swiper-button-prev',  
+},
+});
+</script></div> {% schema %} {"tag":"section","name":"collection-slider","class":"section-collection-swiper","settings":[{"type":"collection","id":"slider_collection","label":"Slider Collection"},{"id":"text_collection_title","type":"text","label":"Collection Title","default":"Collection"},{"id":"richtext_collection_description","type":"richtext","label":"Collection Description","default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>"},{"id":"checkbox_show_pagination","type":"checkbox","label":"Show Pagination","default":true},{"id":"checkbox_show_all","type":"checkbox","label":"Show All","default":true}],"presets":[{"name":"collection-slider","category":"Liquify","blocks":[]}]} {% endschema %}

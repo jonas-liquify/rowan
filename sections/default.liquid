@@ -1,0 +1,20 @@
+<div class="padding-global padding-section-medium"><div class="container-large"><div class="default_wrapper">{% if section.settings.checkbox_show_title == true %}
+<div class="padding-bottom padding-medium"><h1 li-object="page.title" class="heading-style-h1">{{ page.title }}</h1></div>{% endif %}
+<div li-object="page.content" class="text-rich-text w-richtext">{{ page.content }}</div><div li-content-for-blocks="" class="div-content-block">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    {% when '' %}
+            <div li-block="">
+                    <div>
+{{ block.settings.text_text }}
+</div>
+
+                </div>
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+</div></div></div> {% schema %} {"tag":"section","name":"Default","class":"section_default","blocks":[{"name":"","type":"","settings":[{"id":"text_text","type":"text","label":"Text","default":"Test"}]}],"settings":[{"id":"checkbox_show_title","type":"checkbox","label":"Show Title","default":true}],"presets":[{"name":"Default","category":"Liquify","blocks":[{"type":""}]}]} {% endschema %}

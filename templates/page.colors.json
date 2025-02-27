@@ -1,0 +1,12 @@
+{
+    "sections": {
+        "colors_gallery": {
+            "type": "colors_gallery"
+        }
+    },
+    "layout": "page.colors",
+    "wrapper": "main.main-wrapper",
+    "order": [
+        "colors_gallery"
+    ]
+}

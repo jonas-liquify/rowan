@@ -1,0 +1,56 @@
+<div class="padding-global"><div class="container-large"><div class="padding-section-large"><div class="gallery6_component"><div class="margin-bottom margin-xxlarge"><div class="max-width-large"><div class="margin-bottom margin-small"><h2 class="heading-style-h2">Matchless Cabinet Finishes</h2></div><p class="text-size-medium">Most of our finishes can be used for both cabinets and countertops. However, some finishes are exclusive to either cabinets or countertops. Click on each finish to learn more.</p></div><div class="w-layout-grid gallery6_grid-list-2"><div li-content-for-blocks="" class="w-layout-grid gallery6_row-2">
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when '@app' %}
+            {% render block %}
+    {% when 'color-thumbnail' %}
+            <a href="#" li-block="Color Thumbnail" id="w-node-_2cbace5b-67cf-d179-1d82-ad98f49c9c28-08b0cc14" class="gallery6_lightbox-link-2 w-inline-block w-lightbox">
+                    
+                    <div class="gallery6_image-wrapper"><img loading="lazy" alt="{{ block.settings.image_color_swatch.alt }}" src="{{ block.settings.image_color_swatch | img_url: 'master' }}" class="gallery6_image">
+<div class="thumbnail-text_overlay"><div class="text-block-3"> {{ block.settings.richtext_overlay_text }} </div>
+</div></div>
+                    
+                    <div><h6 class="heading-style-h6">
+{{ block.settings.text_color_name }}
+</h6>
+</div>
+                    
+                    <script type="application/json" class="w-json">{
+  "items": [],
+  "group": "Color Swatches"
+}</script>
+                    
+                </a>
+        {% endcase %}
+{% endfor %}
+
+</div>
+
+<div class="code-embed-6 w-embed w-script"><script type="application/javascript" data-name="color-blocks-lightbox">document.addEventListener('DOMContentLoaded', function() {
+      let me = document.querySelector('script[data-name="color-blocks-lightbox"]');
+      // Get all siblings (including the target element itself)
+      const allSiblings = me.parentNode.parentNode.querySelectorAll('*');
+      const scriptTags = Array.from(allSiblings).filter(sibling =>
+        sibling !== me && sibling.classList.contains('w-json')
+      );
+      const images = Array.from(allSiblings).filter(sibling =>
+        sibling !== me && sibling.classList.contains('gallery6_image')
+      );
+      let counter = 0;
+      images.forEach(i => {
+        let s = i.getAttribute('src');
+        const jsonBody = JSON.parse(scriptTags[counter].innerText);
+        const item = {
+          "id": s,
+          "origFileName": s,
+          "fileName": s,
+          "height": "100%",
+          "url": s,
+          "type": "image"
+        };
+        jsonBody.items.push(item);
+        scriptTags[counter].innerText = JSON.stringify(jsonBody);
+        counter++;
+      });
+    });
+  </script></div></div></div></div></div></div></div> {% schema %} {"tag":"section","name":"Colors Gallery","class":"section_gallery6","blocks":[{"name":"Color Thumbnail","type":"color-thumbnail","settings":[{"id":"image_color_swatch","type":"image_picker","label":"Color Swatch"},{"id":"richtext_overlay_text","type":"richtext","label":"Overlay Text","default":"<p>This is some text inside of a div block.<\/p>"},{"id":"text_color_name","type":"text","label":"Color Name","default":"Color Name"}]}],"presets":[{"name":"Colors Gallery","category":"Liquify","blocks":[{"type":"color-thumbnail"}]}]} {% endschema %}
